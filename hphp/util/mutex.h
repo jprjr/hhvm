@@ -113,7 +113,7 @@ public:
       pthread_mutexattr_settype(&m_mutexattr, PTHREAD_MUTEX_RECURSIVE);
     } else {
 #if (defined(__APPLE__) || defined(__CYGWIN__) || defined(__MINGW__) || \
-    defined(_MSC_VER))
+    defined(_MSC_VER) || (defined(__linux__) && !defined(__GLIBC__)))
       pthread_mutexattr_settype(&m_mutexattr, PTHREAD_MUTEX_DEFAULT);
 #else
       pthread_mutexattr_settype(&m_mutexattr, PTHREAD_MUTEX_ADAPTIVE_NP);
